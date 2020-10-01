@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "eb4JWbukEEqkHhILp6jK218jbfvYkpCzhydcKfwGvtwNmASkGogaE5rUrAvyG76bGkPLDHpKZ6p/QH2zQ+FIIA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\fsf91\\_code\\MarsRoverWebAPI\\MarsRoverWebAPI\\MarsRoverWebAPI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\fsf91\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
