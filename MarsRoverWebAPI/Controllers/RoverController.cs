@@ -45,7 +45,7 @@ namespace MarsRoverWebAPI.Controllers
             }
             else if (!instructionsRegex.IsMatch(value.MovementInstruction))
             {
-                return new RoverResponse { Message = "Movement Instructions are incorrect. Instructions can only have values of 'R', 'L', and 'M'.", CurrentPosition = "()" };
+                return new RoverResponse { Message = "Movement Instructions are incorrect. Instructions can only have values of 'R', 'L', and/or 'M'.", CurrentPosition = "()" };
             }
 
             // Retreive rover from Session Storage. If rover does not exist, then create a new one.
