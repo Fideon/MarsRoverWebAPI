@@ -25,7 +25,7 @@ namespace MarsRoverWebAPI.Controllers
                 return new RoverResponse { Message = "Rover ID is over the allowed limit. Rover ID should be less than 10 characters.", CurrentPosition = "()" };
             }
 
-            Rover rover = SessionRoverExtension.GetObject<Rover>(HttpContext.Session, id);
+            Rover rover = SessionRoverExtension.GetRover<Rover>(HttpContext.Session, id);
 
             if (rover == null)
                 return new RoverResponse { Message = "Rover does not exist.", CurrentPosition = "()" };
@@ -51,13 +51,13 @@ namespace MarsRoverWebAPI.Controllers
             }
 
             // Retreive rover from Session Storage. If rover does not exist, then create a new one.
-            Rover rover = SessionRoverExtension.GetObject<Rover>(HttpContext.Session, value.RoverId) == null ? new Rover(value.RoverId, "N", 0, 0) : SessionRoverExtension.GetObject<Rover>(HttpContext.Session, value.RoverId);
+            Rover rover = SessionRoverExtension.GetRover<Rover>(HttpContext.Session, value.RoverId) == null ? new Rover(value.RoverId, "N", 0, 0) : SessionRoverExtension.GetRover<Rover>(HttpContext.Session, value.RoverId);
 
             // Execute all instructions sent for rover.
             rover = RoverOperationsService.ExecuteInstructions(value.MovementInstruction, rover);
 
             // Save rover to Session Storage, and return result.
-            SessionRoverExtension.SetObject(HttpContext.Session, value.RoverId, rover);
+            SessionRoverExtension.SetRover(HttpContext.Session, value.RoverId, rover);
             return new RoverResponse { Message = $"Rover {rover.RoverId} has moved. Orientation is: {rover.RoverOrientation}.", CurrentPosition = $"({rover.RoverX},{rover.RoverY})" };
         }
     }

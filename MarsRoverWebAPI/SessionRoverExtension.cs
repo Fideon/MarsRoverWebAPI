@@ -9,15 +9,15 @@ namespace MarsRoverWebAPI
 {
     public static class SessionRoverExtension
     {
-        public static void SetObject(this ISession session, string key, Rover rover)
+        public static void SetRover(this ISession session, string key, Rover rover)
         {
             session.SetString(key, JsonConvert.SerializeObject(rover));
         }
 
-        public static T GetObject<T>(this ISession session, string key)
+        public static Rover GetRover<Rover>(this ISession session, string key)
         {
             var value = session.GetString(key);
-            return value == null ? default(T) : JsonConvert.DeserializeObject<T>(value);
+            return value == null ? default : JsonConvert.DeserializeObject<Rover>(value);
         }
     }
 }
